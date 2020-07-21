@@ -8,7 +8,7 @@ class UserMatchesController < ApplicationController
   def show
     @user_match = UserMatch.find(params[:id])
 
-    render json: @user_match
+    render json: @user_match, include: %i[user match]
   end
 
   def create
