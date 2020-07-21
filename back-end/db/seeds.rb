@@ -14,22 +14,14 @@ cities = ['Denver', 'Aurora', 'Boulder', 'Colorado Springs', 'Golden', 'Pueblo',
 
 cities.each do |city|
   50.times do
-    User.create(
+    parameters = {
       username: Faker::Twitter.screen_name,
       email: Faker::Internet.email,
       name: Faker::Name.name,
       interests: Faker::Hipster.word,
       city: city
-    )
+    }
+    User.create(parameters)
+    Match.create(parameters)
   end
-end
-
-User.all.each do |user|
-  Match.create(
-    username: user.username,
-    email: user.email,
-    name: user.name,
-    interests: user.interests,
-    city: user.city
-  )
 end
