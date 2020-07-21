@@ -10,7 +10,6 @@ UserMatch.destroy_all
 Match.destroy_all
 User.destroy_all
 
-
 cities = ['Denver', 'Aurora', 'Boulder', 'Colorado Springs', 'Golden', 'Pueblo', 'Ft. Collins', 'Grand Junction', 'Bailey', 'Frisco']
 
 cities.each do |city|
@@ -23,4 +22,14 @@ cities.each do |city|
       city: city
     )
   end
+end
+
+User.all.each do |user|
+  Match.create(
+    username: user.username,
+    email: user.email,
+    name: user.name,
+    interests: user.interests,
+    city: user.city
+  )
 end
