@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+UserMatch.destroy_all
+Match.destroy_all
+User.destroy_all
+
+
+cities = ['Denver', 'Aurora', 'Boulder', 'Colorado Springs', 'Golden', 'Pueblo', 'Ft. Collins', 'Grand Junction', 'Bailey', 'Frisco']
+
+cities.each do |city|
+  50.times do
+    User.create(
+      username: Faker::Twitter.screen_name,
+      email: Faker::Internet.email,
+      name: Faker::Name.name,
+      interests: Faker::Hipster.word,
+      city: city
+    )
+  end
+end
